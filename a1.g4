@@ -1,29 +1,29 @@
 grammar a1;
 
 // Parser:
-start: co=command* EOF;
+start: cmd=command* EOF;
 
 
-command : TOKEN VARIABLE+
-	 latchDec+
-	| UPDATE updateDecl+
-	| TOKEN expr
-	| TOKEN
+command : t=TOKEN v1=VARIABLE+
+	| latchDec+
+	| u=UPDATE updateDecl+
+	| t=TOKEN expr
+	| t=TOKEN
 	| simInp
 	;
-updateDecl: VARIABLE '=' expr*
+updateDecl: v1=VARIABLE op='=' e1=expr*
 ;
 
-simInp: VARIABLE '=' CONST;
+simInp: v1=VARIABLE op='=' c=CONST;
 
-latchDec: LATCH VARIABLE '->' VARIABLE;
+latchDec: lat=LATCH v1=VARIABLE '->' v2=VARIABLE;
 
-expr	: NOT expr
-	| expr ('&&') expr
-	| expr ('||') expr	
-	| '(' expr ')'
-	| VARIABLE
-	| CONST
+expr: NOT e1=expr 				// NOT
+	| e1=expr op='&&' e2=expr		// AND
+	| e1=expr op='||' e2=expr		// OR
+	| '(' e1=expr ')'			// Parenthesis
+	| v1=VARIABLE				// VARIABLE
+	| c=CONST					// CONST
 	;
 
 // Lexer:
@@ -41,8 +41,6 @@ LOGIC : '&&' | '||' | '==';
 
 fragment
 ID : [a-z][a-z_]* ; 
-
-//TEXT : ~[<>/ \t\n]+ ;
 
 WHITESPACE : [ \t\n] -> skip;
 
