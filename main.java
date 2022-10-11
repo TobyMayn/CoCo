@@ -24,13 +24,13 @@ public class main {
 	    //new ANTLRFileStream (filename); // depricated
 	
 	// create a lexer/scanner
-	implLexer lex = new implLexer(input);
+	a1Lexer lex = new a1Lexer(input);
 	
 	// get the stream of tokens from the scanner
 	CommonTokenStream tokens = new CommonTokenStream(lex);
 	
 	// create a parser
-	implParser parser = new implParser(tokens);
+	a1Parser parser = new a1Parser(tokens);
 	
 	// and parse anything from the grammar for "start"
 	ParseTree parseTree = parser.start();
@@ -47,31 +47,38 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Integer.
 
-class Interpreter extends AbstractParseTreeVisitor<Expr> implements implVisitor<Expr> {
+class Interpreter extends AbstractParseTreeVisitor<Expr> implements a1Visitor<Expr> {
 
-    public Expr visitStart(implParser.StartContext ctx){
+    public Expr visitStart(a1Parser.StartContext ctx){
 	return visit(ctx.e1);
     };
-    public Expr visitMultiplication(implParser.MultiplicationContext ctx){
-	if (ctx.op.getText().equals("*"))
-	    return new Multiplication(visit(ctx.e1),visit(ctx.e2));
+    public Expr visitNot(a1Parser.NotContext ctx){
+	if (ctx.op.getText().equals("!"))
+	    return new Not(visit(ctx.e1),visit(ctx.e2));
 	else
-	    return new Division(visit(ctx.e1),visit(ctx.e2));
+	    return NULL;
     };
-    public Expr visitAddition(implParser.AdditionContext ctx){
-	if (ctx.op.getText().equals("+"))
-	    return new Addition(visit(ctx.e1),visit(ctx.e2));
+    public Expr visitAnd(a1Parser.AndContext ctx){
+	if (ctx.op.getText().equals("&&"))
+	    return new And(visit(ctx.e1),visit(ctx.e2));
 	else
-	    return new Subtraction(visit(ctx.e1),visit(ctx.e2));
+	    return NULL;
     };
-    public Expr visitVariable(implParser.VariableContext ctx){
+    public Expr visitVariable(a1Parser.VariableContext ctx){
 	return new Variable(ctx.x.getText());
     };
-    public Expr visitConstant(implParser.ConstantContext ctx){
+    public Expr visitConstant(a1Parser.ConstantContext ctx){
 	return new Constant(Integer.parseInt(ctx.c.getText()));
     };
-    public Expr visitParentheses(implParser.ParenthesesContext ctx){
+    public Expr visitParentheses(a1Parser.ParenthesesContext ctx){
 	return visit(ctx.e1);
     };
+    
+    public Expr visitOr(a1Parser.OrContext ctx){
+    if (ctx.op.getText().equals("||"))
+	    return new Or(visit(ctx.e1),visit(ctx.e2));
+	else
+	    return NULL;
+	};
 }
 
