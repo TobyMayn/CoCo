@@ -16,7 +16,7 @@ updateDecl: v1=VARIABLE op='=' e1=expr*
 
 simInp: v1=VARIABLE op='=' c=CONST;
 
-latchDec: lat=LATCH v1=VARIABLE '->' v2=VARIABLE;
+latchDec: lat=LATCH v1=VARIABLE op='->' v2=VARIABLE;
 
 expr: NOT e1=expr 				// NOT
 	| e1=expr op='&&' e2=expr		// AND
