@@ -8,6 +8,15 @@ import java.util.List;
 
 public abstract class AST{};
 
+
+abstract class Start extends AST {}
+
+abstract class UpdateDecl extends AST {}
+
+abstract class SimInp extends AST {}
+
+abstract class LatchDec extends AST {}
+
 abstract class Expr extends AST{
     abstract public void eval(Environment env);
 }
