@@ -16,12 +16,6 @@ public interface a1Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStart(a1Parser.StartContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a1Parser#command}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCommand(a1Parser.CommandContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link a1Parser#updateDecl}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

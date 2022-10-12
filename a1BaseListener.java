@@ -28,18 +28,6 @@ public class a1BaseListener implements a1Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCommand(a1Parser.CommandContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitCommand(a1Parser.CommandContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterUpdateDecl(a1Parser.UpdateDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}

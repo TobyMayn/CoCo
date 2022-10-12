@@ -1,16 +1,9 @@
 grammar a1;
 
 // Parser:
-start: cmd=command* EOF;
+start: (t=TOKEN v1=VARIABLE+)*  (latchDec+) (u=UPDATE updateDecl+) t=TOKEN simInp EOF;
 
 
-command : t=TOKEN v1=VARIABLE+
-	| latchDec+
-	| u=UPDATE updateDecl+
-	| t=TOKEN expr
-	| t=TOKEN
-	| simInp
-	;
 updateDecl: v1=VARIABLE op='=' e1=expr*
 ;
 

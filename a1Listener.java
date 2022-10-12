@@ -17,16 +17,6 @@ public interface a1Listener extends ParseTreeListener {
 	 */
 	void exitStart(a1Parser.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a1Parser#command}.
-	 * @param ctx the parse tree
-	 */
-	void enterCommand(a1Parser.CommandContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link a1Parser#command}.
-	 * @param ctx the parse tree
-	 */
-	void exitCommand(a1Parser.CommandContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link a1Parser#updateDecl}.
 	 * @param ctx the parse tree
 	 */
