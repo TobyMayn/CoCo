@@ -12,7 +12,7 @@ public class main {
 	// we expect exactly one argument: the name of the input file
 	if (args.length!=1) {
 	    System.err.println("\n");
-	    System.err.println("Impl Interpreter\n");
+	    System.err.println("a1 Interpreter\n");
 	    System.err.println("=================\n\n");
 	    System.err.println("Please give as input argument a filename\n");
 	    System.exit(-1);
@@ -79,6 +79,6 @@ class Interpreter extends AbstractParseTreeVisitor<Expr> implements a1Visitor<Ex
 	    return new Or(visit(ctx.e1),visit(ctx.e2));
 	else
 	    return NULL;
-	};
+    };
 }
 
