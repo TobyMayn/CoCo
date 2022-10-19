@@ -354,24 +354,65 @@ public class a1Parser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
+		public ExprContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_expr; }
+	 
+		public ExprContext() { }
+		public void copyFrom(ExprContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class NotContext extends ExprContext {
+		public Token op;
 		public ExprContext e1;
+		public TerminalNode NOT() { return getToken(a1Parser.NOT, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public NotContext(ExprContext ctx) { copyFrom(ctx); }
+	}
+	public static class ParenthesisContext extends ExprContext {
+		public ExprContext e1;
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public ParenthesisContext(ExprContext ctx) { copyFrom(ctx); }
+	}
+	public static class VariableContext extends ExprContext {
 		public Token v1;
-		public Token c;
+		public TerminalNode VARIABLE() { return getToken(a1Parser.VARIABLE, 0); }
+		public VariableContext(ExprContext ctx) { copyFrom(ctx); }
+	}
+	public static class OrContext extends ExprContext {
+		public ExprContext e1;
 		public Token op;
 		public ExprContext e2;
-		public TerminalNode NOT() { return getToken(a1Parser.NOT, 0); }
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode VARIABLE() { return getToken(a1Parser.VARIABLE, 0); }
-		public TerminalNode CONST() { return getToken(a1Parser.CONST, 0); }
-		public ExprContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
+		public OrContext(ExprContext ctx) { copyFrom(ctx); }
+	}
+	public static class AndContext extends ExprContext {
+		public ExprContext e1;
+		public Token op;
+		public ExprContext e2;
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
 		}
-		@Override public int getRuleIndex() { return RULE_expr; }
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public AndContext(ExprContext ctx) { copyFrom(ctx); }
+	}
+	public static class ConstContext extends ExprContext {
+		public Token c;
+		public TerminalNode CONST() { return getToken(a1Parser.CONST, 0); }
+		public ConstContext(ExprContext ctx) { copyFrom(ctx); }
 	}
 
 	public final ExprContext expr() throws RecognitionException {
@@ -394,32 +435,45 @@ public class a1Parser extends Parser {
 			switch (_input.LA(1)) {
 			case NOT:
 				{
+				_localctx = new NotContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
 				setState(54);
-				match(NOT);
+				((NotContext)_localctx).op = match(NOT);
 				setState(55);
-				((ExprContext)_localctx).e1 = expr(6);
+				((NotContext)_localctx).e1 = expr(6);
 				}
 				break;
 			case T__4:
 				{
+				_localctx = new ParenthesisContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(56);
 				match(T__4);
 				setState(57);
-				((ExprContext)_localctx).e1 = expr(0);
+				((ParenthesisContext)_localctx).e1 = expr(0);
 				setState(58);
 				match(T__5);
 				}
 				break;
 			case VARIABLE:
 				{
+				_localctx = new VariableContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(60);
-				((ExprContext)_localctx).v1 = match(VARIABLE);
+				((VariableContext)_localctx).v1 = match(VARIABLE);
 				}
 				break;
 			case CONST:
 				{
+				_localctx = new ConstContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(61);
-				((ExprContext)_localctx).c = match(CONST);
+				((ConstContext)_localctx).c = match(CONST);
 				}
 				break;
 			default:
@@ -439,30 +493,28 @@ public class a1Parser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 					case 1:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
-						_localctx.e1 = _prevctx;
-						_localctx.e1 = _prevctx;
+						_localctx = new AndContext(new ExprContext(_parentctx, _parentState));
+						((AndContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(64);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(65);
-						((ExprContext)_localctx).op = match(T__2);
+						((AndContext)_localctx).op = match(T__2);
 						setState(66);
-						((ExprContext)_localctx).e2 = expr(6);
+						((AndContext)_localctx).e2 = expr(6);
 						}
 						break;
 					case 2:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
-						_localctx.e1 = _prevctx;
-						_localctx.e1 = _prevctx;
+						_localctx = new OrContext(new ExprContext(_parentctx, _parentState));
+						((OrContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(67);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(68);
-						((ExprContext)_localctx).op = match(T__3);
+						((OrContext)_localctx).op = match(T__3);
 						setState(69);
-						((ExprContext)_localctx).e2 = expr(5);
+						((OrContext)_localctx).e2 = expr(5);
 						}
 						break;
 					}

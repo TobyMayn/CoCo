@@ -11,12 +11,12 @@ simInp: v1=VARIABLE op='=' c=CONST;
 
 latchDec: lat=LATCH v1=VARIABLE op='->' v2=VARIABLE;
 
-expr: NOT e1=expr 				// NOT
-	| e1=expr op='&&' e2=expr		// AND
-	| e1=expr op='||' e2=expr		// OR
-	| '(' e1=expr ')'			// Parenthesis
-	| v1=VARIABLE				// VARIABLE
-	| c=CONST					// CONST
+expr: op=NOT e1=expr 				# Not
+	| e1=expr op='&&' e2=expr		# And
+	| e1=expr op='||' e2=expr		# Or
+	| '(' e1=expr ')'			# Parenthesis
+	| v1=VARIABLE				# Variable
+	| c=CONST					# Const
 	;
 
 // Lexer:

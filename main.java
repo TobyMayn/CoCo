@@ -47,38 +47,50 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Integer.
 
-class Interpreter extends AbstractParseTreeVisitor<Expr> implements a1Visitor<Expr> {
+class Interpreter extends AbstractParseTreeVisitor<AST> implements a1Visitor<AST> {
 
-    public Expr visitStart(a1Parser.StartContext ctx){
-	return visit(ctx.e1);
+    public AST visitStart(a1Parser.StartContext ctx){
     };
-    public Expr visitNot(a1Parser.NotContext ctx){
+
+	public AST visitUpdateDecl(a1Parser.UpdateDeclContext ctx) {
+		return new UpdateDec(visit(ctx.v1), ctx.e1);
+	}
+
+	public AST visitSimInp(a1Parser.SimInpContext ctx){
+		Variable var1 = new Variable(ctx.v1.getText());
+		return new SimInp(ctx.v1, ctx.c);
+	}
+
+	public AST visitLatchDec(a1Parser.LatchDecContext ctx) {
+		return new LatchDec(ctx.v1, ctx.v2);
+	}	
+
+    public AST visitNot(a1Parser.NotContext ctx){
 	if (ctx.op.getText().equals("!"))
 	    return new Not(visit(ctx.e1),visit(ctx.e2));
 	else
 	    return NULL;
     };
-    public Expr visitAnd(a1Parser.AndContext ctx){
+    public AST visitAnd(a1Parser.AndContext ctx){
 	if (ctx.op.getText().equals("&&"))
 	    return new And(visit(ctx.e1),visit(ctx.e2));
 	else
 	    return NULL;
     };
-    public Expr visitVariable(a1Parser.VariableContext ctx){
+    public AST visitVariable(a1Parser.VariableContext ctx){
 	return new Variable(ctx.x.getText());
     };
-    public Expr visitConstant(a1Parser.ConstantContext ctx){
-	return new Constant(Integer.parseInt(ctx.c.getText()));
+    public AST visitConst(a1Parser.ConstContext ctx){
+	return new Constant(ctx.c.getText());
     };
-    public Expr visitParentheses(a1Parser.ParenthesesContext ctx){
+    public AST visitParenthesis(a1Parser.ParenthesisContext ctx){
 	return visit(ctx.e1);
     };
-    
-    public Expr visitOr(a1Parser.OrContext ctx){
+    public AST visitOr(a1Parser.OrContext ctx){
     if (ctx.op.getText().equals("||"))
 	    return new Or(visit(ctx.e1),visit(ctx.e2));
 	else
 	    return NULL;
-    };
+    }
 }
 

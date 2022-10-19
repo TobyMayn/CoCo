@@ -11,41 +11,34 @@ public abstract class AST{};
 
 abstract class Start extends AST {}
 
-abstract class UpdateDecl extends AST {}
-
-class Update extends UpdateDecl {
+class UpdateDec extends Start {
     Variable v1;
     Expr e1;
 
-    Update(Variable v1, Expr e1) {
+    UpdateDec(Variable v1, Expr e1) {
         this.v1 = v1;
         this.e1 = e1;
     }
 }
 
-
-abstract class SimInp extends AST {}
-
-class Simulate extends SimInp {
+class SimInp extends Start {
     Variable v1;
     Constant c;
 
-    Simulate (Variable v1, Constant c) {
+    SimInp (Variable v1, Constant c) {
         this.v1 = v1;
         this.c = c;
     }
-
 }
-abstract class LatchDec extends AST {}
-
-class Latch extends LatchDec {
+class LatchDec extends Start {
     Variable v1, v2;
 
-    Latch(Variable v1, Variable v2) {
+    LatchDec(Variable v1, Variable v2) {
         this.v1 = v1;
         this.v2 = v2;
     }
 }
+
 abstract class Expr extends AST{
     abstract public void eval(Environment env);
 }

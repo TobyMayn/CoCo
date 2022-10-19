@@ -34,9 +34,45 @@ public interface a1Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLatchDec(a1Parser.LatchDecContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a1Parser#expr}.
+	 * Visit a parse tree produced by the {@code Not}
+	 * labeled alternative in {@link a1Parser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpr(a1Parser.ExprContext ctx);
+	T visitNot(a1Parser.NotContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Parenthesis}
+	 * labeled alternative in {@link a1Parser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParenthesis(a1Parser.ParenthesisContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link a1Parser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariable(a1Parser.VariableContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Or}
+	 * labeled alternative in {@link a1Parser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOr(a1Parser.OrContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code And}
+	 * labeled alternative in {@link a1Parser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAnd(a1Parser.AndContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Const}
+	 * labeled alternative in {@link a1Parser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConst(a1Parser.ConstContext ctx);
 }
