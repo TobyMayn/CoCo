@@ -1,7 +1,7 @@
 grammar a1;
 
 // Parser:
-start: (t=TOKEN v1=VARIABLE+)*  (latchDec+) (u=UPDATE updateDecl+) t=TOKEN simInp EOF;
+start: '.hardware' in+=VARIABLE+  (latchDec+) (u=UPDATE updateDecl+) '.simulate' simInp EOF;
 
 
 updateDecl: v1=VARIABLE op='=' e1=expr*
