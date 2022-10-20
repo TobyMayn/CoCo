@@ -1,7 +1,7 @@
 grammar a1;
 
 // Parser:
-start: '.hardware' hard=VARIABLE '.inputs' in+= VARIABLE+ '.outputs' out+=VARIABLE+ latch+=latchDec+ '.update' up+=updateDecl+ '.simulate' sim+=simInp+ EOF;
+start: '.hardware' hard=VARIABLE '.inputs' in+=VARIABLE+ '.outputs' out+=VARIABLE+ latch+=latchDec+ '.update' up+=updateDecl+ '.simulate' sim+=simInp+ EOF;
 
 
 updateDecl: v1=VARIABLE '=' e1=expr* #Update;

@@ -4,7 +4,7 @@ import java.util.Map.Entry;
 class Environment {
     private HashMap<Variable,Boolean> variableValues = new HashMap<Variable,Boolean>();
     public Environment() { }	
-    public void setVariable(Variable name, boolean value) {
+    public void setVariable(Variable name, Boolean value) {
 	variableValues.put(name, value);
     }
     
