@@ -51,46 +51,37 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements a1Visitor<AST
 
     public AST visitStart(a1Parser.StartContext ctx){
     };
-
-	public AST visitUpdateDecl(a1Parser.UpdateDeclContext ctx) {
+	
+	public AST visitUpdate(a1Parser.UpdateContext ctx) {
 		return new UpdateDec(visit(ctx.v1), ctx.e1);
 	}
 
-	public AST visitSimInp(a1Parser.SimInpContext ctx){
+	public AST visitSimulate(a1Parser.SimulateContext ctx) {
 		Variable var1 = new Variable(ctx.v1.getText());
-		return new SimInp(ctx.v1, ctx.c);
+		return new SimInp(var1, ctx.c);
+	}
+	
+	public AST visitLatch(a1Parser.LatchContext ctx) {
+		return new LatchDec(ctx.v1, ctx.v2);
 	}
 
-	public AST visitLatchDec(a1Parser.LatchDecContext ctx) {
-		return new LatchDec(ctx.v1, ctx.v2);
-	}	
-
     public AST visitNot(a1Parser.NotContext ctx){
-	if (ctx.op.getText().equals("!"))
 	    return new Not(visit(ctx.e1),visit(ctx.e2));
-	else
-	    return NULL;
     };
     public AST visitAnd(a1Parser.AndContext ctx){
-	if (ctx.op.getText().equals("&&"))
 	    return new And(visit(ctx.e1),visit(ctx.e2));
-	else
-	    return NULL;
     };
     public AST visitVariable(a1Parser.VariableContext ctx){
-	return new Variable(ctx.x.getText());
+		return new Variable(ctx.x.getText());
     };
     public AST visitConst(a1Parser.ConstContext ctx){
-	return new Constant(ctx.c.getText());
+		return new Constant(ctx.c.getText());
     };
     public AST visitParenthesis(a1Parser.ParenthesisContext ctx){
-	return visit(ctx.e1);
+		return visit(ctx.e1);
     };
     public AST visitOr(a1Parser.OrContext ctx){
-    if (ctx.op.getText().equals("||"))
 	    return new Or(visit(ctx.e1),visit(ctx.e2));
-	else
-	    return NULL;
     }
 }
 
