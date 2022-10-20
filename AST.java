@@ -13,6 +13,29 @@ public abstract class AST{
 
 abstract class Start extends AST {}
 
+class Simulator extends Start {
+    
+    Variable hard;
+    List<Variable> in;
+    List<Variable> out;
+    List<LatchDec> latch;
+    List<UpdateDec> up;
+    List<SimInp> sim;
+
+    Simulator(Variable hard, List<Variable> in, List<Variable> out,
+    List<LatchDec> latch, List<UpdateDec> up, List<SimInp> sim){
+
+        this.hard = hard;
+        this.in = in;
+        this.out = out;
+        this.latch = latch;
+        this.up = up;
+        this.sim = sim;
+    }
+
+    public void eval(Environment env) {}
+}
+
 class UpdateDec extends Start {
     Variable v1;
     Expr e1;
