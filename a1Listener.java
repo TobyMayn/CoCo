@@ -17,35 +17,41 @@ public interface a1Listener extends ParseTreeListener {
 	 */
 	void exitStart(a1Parser.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a1Parser#updateDecl}.
+	 * Enter a parse tree produced by the {@code Update}
+	 * labeled alternative in {@link a1Parser#updateDecl}.
 	 * @param ctx the parse tree
 	 */
-	void enterUpdateDecl(a1Parser.UpdateDeclContext ctx);
+	void enterUpdate(a1Parser.UpdateContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a1Parser#updateDecl}.
+	 * Exit a parse tree produced by the {@code Update}
+	 * labeled alternative in {@link a1Parser#updateDecl}.
 	 * @param ctx the parse tree
 	 */
-	void exitUpdateDecl(a1Parser.UpdateDeclContext ctx);
+	void exitUpdate(a1Parser.UpdateContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a1Parser#simInp}.
+	 * Enter a parse tree produced by the {@code Simulate}
+	 * labeled alternative in {@link a1Parser#simInp}.
 	 * @param ctx the parse tree
 	 */
-	void enterSimInp(a1Parser.SimInpContext ctx);
+	void enterSimulate(a1Parser.SimulateContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a1Parser#simInp}.
+	 * Exit a parse tree produced by the {@code Simulate}
+	 * labeled alternative in {@link a1Parser#simInp}.
 	 * @param ctx the parse tree
 	 */
-	void exitSimInp(a1Parser.SimInpContext ctx);
+	void exitSimulate(a1Parser.SimulateContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a1Parser#latchDec}.
+	 * Enter a parse tree produced by the {@code Latch}
+	 * labeled alternative in {@link a1Parser#latchDec}.
 	 * @param ctx the parse tree
 	 */
-	void enterLatchDec(a1Parser.LatchDecContext ctx);
+	void enterLatch(a1Parser.LatchContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a1Parser#latchDec}.
+	 * Exit a parse tree produced by the {@code Latch}
+	 * labeled alternative in {@link a1Parser#latchDec}.
 	 * @param ctx the parse tree
 	 */
-	void exitLatchDec(a1Parser.LatchDecContext ctx);
+	void exitLatch(a1Parser.LatchContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Not}
 	 * labeled alternative in {@link a1Parser#expr}.

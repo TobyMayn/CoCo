@@ -28,37 +28,37 @@ public class a1BaseListener implements a1Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUpdateDecl(a1Parser.UpdateDeclContext ctx) { }
+	@Override public void enterUpdate(a1Parser.UpdateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUpdateDecl(a1Parser.UpdateDeclContext ctx) { }
+	@Override public void exitUpdate(a1Parser.UpdateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSimInp(a1Parser.SimInpContext ctx) { }
+	@Override public void enterSimulate(a1Parser.SimulateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSimInp(a1Parser.SimInpContext ctx) { }
+	@Override public void exitSimulate(a1Parser.SimulateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLatchDec(a1Parser.LatchDecContext ctx) { }
+	@Override public void enterLatch(a1Parser.LatchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLatchDec(a1Parser.LatchDecContext ctx) { }
+	@Override public void exitLatch(a1Parser.LatchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

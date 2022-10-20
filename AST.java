@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AST{};
+public abstract class AST{
+    abstract public void eval(Environment env);
+};
 
 
 abstract class Start extends AST {}
@@ -19,6 +21,8 @@ class UpdateDec extends Start {
         this.v1 = v1;
         this.e1 = e1;
     }
+
+    public void eval(Environment env){}
 }
 
 class SimInp extends Start {
@@ -29,6 +33,8 @@ class SimInp extends Start {
         this.v1 = v1;
         this.c = c;
     }
+
+    public void eval(Environment env){}
 }
 class LatchDec extends Start {
     Variable v1, v2;
@@ -37,6 +43,7 @@ class LatchDec extends Start {
         this.v1 = v1;
         this.v2 = v2;
     }
+    public void eval(Environment env){}
 }
 
 abstract class Expr extends AST{
@@ -48,8 +55,7 @@ class Not extends Expr {
     Not(Expr e1){
         this.e1 = e1;
     }
-    public void eval(Environment env){
-    };
+    public void eval(Environment env){}
 }
 
 class And extends Expr {
@@ -58,8 +64,7 @@ class And extends Expr {
         this.e1 = e1;
         this.e2 = e2;
     }
-    public void eval(Environment env){
-    }
+    public void eval(Environment env){}
 }
 
 class Or extends Expr {
@@ -69,15 +74,13 @@ class Or extends Expr {
         this.e2 = e2;
     }
 
-    public void eval(Environment env){
-    }
+    public void eval(Environment env){}
 }
 
 class Constant {
     public Integer i;
     Constant(Integer i){ this.i=i;}
-    public void eval(Environment env){
-    };
+    public void eval(Environment env){}
 };
 
 
@@ -86,6 +89,6 @@ class Variable extends Expr{
     Variable(String varname){this.varname=varname;}
     public void eval(Environment env){
 	System.out.println("Variable not implemented, assuming "+varname+"=0");
-    };
+    }
 };
 
