@@ -47,6 +47,44 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Integer.
 
+/*class Interpreter extends AbstractParseTreeVisitor<AST> implements a1Visitor<AST> {
+
+    public AST visitStart(a1Parser.StartContext ctx){
+		List<Variable> in = new ArrayList<>();
+		List<Variable> out = new ArrayList<>();
+		List<LatchDec> latch = new ArrayList<>();
+		List<UpdateDec> up = new ArrayList<>();
+		List<SimInp> sim = new ArrayList<>();
+
+		for (Variable inVariable : ctx.i) {
+			in.add(inVariable.getText());
+		}
+
+		for (Variable outVariable : ctx.os) {
+			out.add(outVariable.getText());
+		}
+
+		for (int i = 0; i < ctx.ls.size(); i++) {
+			LatchDec latch = (LatchDec) visit(ctx.ls.get(i));
+			latch.add(latch);
+		}
+
+		for (int i = 0; i < ctx.u.size(); i++) {
+			UpdateDec up = (UpdateDec) visitUpdater((simulatorParser.UpdaterContext) ctx.u.get(i));
+			up.add(up);
+		}
+
+		for (int i = 0; i < ctx.s.size(); i++) {
+			SimInp sim = (SimInp) visitSim(ctx.s.get(i));
+			sim.add(sim);
+		}
+		return new Simulator(in, out, latch, up, sim, new Environment());
+	};
+
+ */
+
+
+
 class Interpreter extends AbstractParseTreeVisitor<AST> implements a1Visitor<AST> {
 
     public AST visitStart(a1Parser.StartContext ctx){
