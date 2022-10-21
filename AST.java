@@ -14,18 +14,15 @@ public abstract class AST{
 abstract class Start extends AST {}
 
 class Simulator extends Start {
-    
-    Variable hard;
+
     List<Variable> in;
     List<Variable> out;
     List<LatchDec> latch;
-    List<UpdateDec> up;
+    List<UpdateDecl> up;
     List<SimInp> sim;
 
-    Simulator(Variable hard, List<Variable> in, List<Variable> out,
-    List<LatchDec> latch, List<UpdateDec> up, List<SimInp> sim){
-
-        this.hard = hard;
+    Simulator(List<Variable> in, List<Variable> out,
+    List<LatchDec> latch, List<UpdateDecl> up, List<SimInp> sim){
         this.in = in;
         this.out = out;
         this.latch = latch;
@@ -36,11 +33,11 @@ class Simulator extends Start {
     public void eval(Environment env) {}
 }
 
-class UpdateDec extends Start {
+class UpdateDecl extends Start {
     Variable v1;
     Expr e1;
 
-    UpdateDec(Variable v1, Expr e1) {
+    UpdateDecl(Variable v1, Expr e1) {
         this.v1 = v1;
         this.e1 = e1;
     }
