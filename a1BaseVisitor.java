@@ -24,21 +24,21 @@ public class a1BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements a1V
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitUpdate(a1Parser.UpdateContext ctx) { return visitChildren(ctx); }
+	@Override public T visitUpdateDecl(a1Parser.UpdateDeclContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSimulate(a1Parser.SimulateContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSimInp(a1Parser.SimInpContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLatch(a1Parser.LatchContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLatchDec(a1Parser.LatchDecContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

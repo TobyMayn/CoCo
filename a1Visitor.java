@@ -16,26 +16,23 @@ public interface a1Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStart(a1Parser.StartContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Update}
-	 * labeled alternative in {@link a1Parser#updateDecl}.
+	 * Visit a parse tree produced by {@link a1Parser#updateDecl}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUpdate(a1Parser.UpdateContext ctx);
+	T visitUpdateDecl(a1Parser.UpdateDeclContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Simulate}
-	 * labeled alternative in {@link a1Parser#simInp}.
+	 * Visit a parse tree produced by {@link a1Parser#simInp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSimulate(a1Parser.SimulateContext ctx);
+	T visitSimInp(a1Parser.SimInpContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Latch}
-	 * labeled alternative in {@link a1Parser#latchDec}.
+	 * Visit a parse tree produced by {@link a1Parser#latchDec}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLatch(a1Parser.LatchContext ctx);
+	T visitLatchDec(a1Parser.LatchDecContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Not}
 	 * labeled alternative in {@link a1Parser#expr}.

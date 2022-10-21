@@ -140,11 +140,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitStart(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitStart(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final StartContext start() throws RecognitionException {
@@ -288,11 +283,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitUpdate(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitUpdate(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final UpdateDeclContext updateDecl() throws RecognitionException {
@@ -363,11 +353,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitSimulate(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitSimulate(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SimInpContext simInp() throws RecognitionException {
@@ -426,11 +411,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitLatch(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitLatch(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final LatchDecContext latchDec() throws RecognitionException {
@@ -488,11 +468,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitNot(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitNot(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParenthesisContext extends ExprContext {
@@ -509,11 +484,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitParenthesis(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitParenthesis(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class VariableContext extends ExprContext {
@@ -527,11 +497,6 @@ public class a1Parser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitVariable(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitVariable(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
@@ -553,11 +518,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitOr(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitOr(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AndContext extends ExprContext {
@@ -578,11 +538,6 @@ public class a1Parser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitAnd(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitAnd(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstContext extends ExprContext {
@@ -596,11 +551,6 @@ public class a1Parser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof a1Listener ) ((a1Listener)listener).exitConst(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof a1Visitor ) return ((a1Visitor<? extends T>)visitor).visitConst(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
